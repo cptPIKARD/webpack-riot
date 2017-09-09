@@ -1,0 +1,24 @@
+{
+  "name": "myApp",
+  "version": "0.0.1",
+  "dependencies": {
+    "path": "^0.12.7",
+    "riot": "latest"
+  },
+  "devDependencies": {
+    "riot-tag-loader": "",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^7.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "6.22.0",
+    "path": "^0.12.7",
+    "pug": "",
+    "url-loader": "0.5.7",
+    "webpack": "^3.3.0",
+    "webpack-dev-server": "^2.4.1"
+  },
+  "scripts": {
+    "dev": "webpack --config bin/webpack.config.js --watch",
+    "prod": ""
+  }
+}
