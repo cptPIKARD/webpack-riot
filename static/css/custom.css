@@ -1,0 +1,166 @@
+.lb-xs {
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.lb-sm {
+    font-size: 12px;
+}
+
+.lb-md {
+    font-size: 16px;
+}
+
+.lb-lg {
+    font-size: 20px;
+}
+
+.grey-background {
+    padding: 1px !important;
+    background-color: #dddddd;
+    margin: -10px;
+    margin-bottom: 10px;
+    border-radius: 0px;
+    border-bottom: none;
+}
+
+.badge-sla {
+    background: #1ba200;
+    line-height: 13px;
+    color: #fff !important;
+    font-size: 13px;
+    text-align: center;
+    padding: 2px 3px;
+    font-weight: 600;
+    margin: 0px !important;
+    letter-spacing: normal !important;
+    cursor: pointer;
+    white-space: nowrap !important;
+    min-width: 75px;
+}
+
+.badge-timeout {
+    background: #e80000 !important;
+}
+
+.badge-danger {
+    background: #e17b30 !important;
+}
+
+.cell-room, .cell-alert, .cell-msg, .cell-employee-photo, .cell-location-icon, .cell-floor {
+    background: #56565a;
+    color: #fff !important;
+    width: 52px;
+    height: 60px;
+    vertical-align: middle;
+    font-weight: 600 !important;
+    text-align: center;
+    font-size: inherit;
+    font-weight: normal;
+    font-size: 13px !important;
+}
+
+.cell-room-dnd {
+    background: #e80000;
+}
+
+.cell-room-oc {
+    background: #dd0000;
+}
+
+.cell-room-do {
+    background: #01aca2;
+}
+
+.cell-room-di {
+    background: #39ac01;
+}
+
+.cell-room-va {
+    background: #8e01ac;
+}
+
+.cell-room-qu {
+    background: #e80000;
+}
+
+span.multiselect-native-select {
+    position: relative
+}
+
+span.multiselect-native-select select {
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    height: 1px !important;
+    margin: -1px -1px -1px -3px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    left: 50%;
+    top: 30px
+}
+
+.multiselect-container {
+    position: absolute;
+    list-style-type: none;
+    margin: 0;
+    padding: 0
+}
+
+.multiselect-container .input-group {
+    margin: 5px
+}
+
+.multiselect-container > li {
+    padding: 0
+}
+
+.multiselect-container > li > a.multiselect-all label {
+    font-weight: 700
+}
+
+.multiselect-container > li.multiselect-group label {
+    margin: 0;
+    padding: 3px 20px 3px 20px;
+    height: 100%;
+    font-weight: 700
+}
+
+.multiselect-container > li.multiselect-group-clickable label {
+    cursor: pointer
+}
+
+.multiselect-container > li > a {
+    padding: 0
+}
+
+.multiselect-container > li > a > label {
+    margin: 0;
+    height: 100%;
+    cursor: pointer;
+    font-weight: 400;
+    padding: 3px 0 3px 30px
+}
+
+.multiselect-container > li > a > label.radio, .multiselect-container > li > a > label.checkbox {
+    margin: 0
+}
+
+.multiselect-container > li > a > label > input[type=checkbox] {
+    margin-bottom: 5px
+}
+
+.btn-group > .btn-group:nth-child(2) > .multiselect.btn {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px
+}
+
+.form-inline .multiselect-container label.checkbox, .form-inline .multiselect-container label.radio {
+    padding: 3px 20px 3px 40px
+}
+
+.form-inline .multiselect-container li a label.checkbox input[type=checkbox], .form-inline .multiselect-container li a label.radio input[type=radio] {
+    margin-left: -20px;
+    margin-right: 0
+}

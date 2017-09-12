@@ -1,20 +1,21 @@
-var path = require('path')
-// var webpack = require('webpack')
+import path from 'path'
 import webpack from 'webpack'
-var NODE_ENV = process.env.NODE_ENV || 'development'
-// const options = loaderUtils.getOptions(this);
+const output = path.join(process.cwd(), 'static')
+const NODE_ENV = process.env.NODE_ENV || 'development'
 
 module.exports = {
     entry: "./src/index.js",
     output: {
-        filename: "myApp.js",
-        path: path.resolve(__dirname, '../static/dist/js')
+        path: output,
+        filename: "../static/dist/myApp.js",
+        library: 'myApp'
     },
     watch: true,
     watchOptions: {
         aggregateTimeout: 100
     },
     plugins: [
+        new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin({
             NODE_ENV: JSON.stringify(NODE_ENV)
         })
@@ -41,12 +42,30 @@ module.exports = {
             }
         ]
     },
+    resolve: {
+        unsafeCache: true,
+        extensions: ['.js', '.es6', '.jsx', '.pug', '.css', '.svg', '.tag', '.png'],
+        modules: ['node_modules']
+    },
+    resolveLoader: {
+        modules: ['node_modules']
+    },
     devServer: {
-        contentBase: 'static',
+        contentBase: output,
         compress: true,
         port: 8787,
         historyApiFallback: {
             index: 'index.html'
         }
     }
+}
+
+if( NODE_ENV == 'production' ) {
+    module.exports.plugins.push(
+        new webpack.optimize.UglifyJsPlugin({
+            unsafe: true,
+            drop_console: true,
+            warnings: false
+        })
+    )
 }
