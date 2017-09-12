@@ -60,26 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _riot = __webpack_require__(1);
-
-var _riot2 = _interopRequireDefault(_riot);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_riot2.default.mount('*');
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Riot v3.7.0, @license MIT */
@@ -3018,6 +3003,75 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _riot = __webpack_require__(0);
+
+var _riot2 = _interopRequireDefault(_riot);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var tags = __webpack_require__(2);
+tags.keys().forEach(tags);
+
+_riot2.default.mount('*');
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./l-header.tag": 3
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 2;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var riot = __webpack_require__(0);
+
+riot.tag2('l-header', '<div class="container-fluid"> <div class="row"> <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2"> <div class="form-group nomargin"> <label class="control-label">Status</label> <div class="input-group" style="background-color:#fff; width: 100%;"> <div style="padding:5px; padding-top:2px; padding-left:10px; padding-right:10px; border:1px solid #eee !important; height:40px; width:100%; display:table;"> <table width="100%" border="0" cellspacing="0" cellpadding="0"> <tr> <td class="text-nowrap" align="center" valign="middle"> <label class="control-label input-md"> <input type="checkbox"><span>Closed</span> </label> </td> <td class="text-nowrap" align="center" valign="middle"> <label class="control-label input-md"> <input type="checkbox"><span>Cancelled</span> </label> </td> <td class="text-nowrap" align="center" valign="middle"> <label class="control-label input-md"> <input type="checkbox"><span>On Hold</span> </label> </td> </tr> </table> </div> </div> </div> </div> <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2"> <div class="form-group nomargin"> <label class="control-label">Priority</label> <div class="input-group" style="background-color:#fff; width: 100%;"><span class="input-group-addon"><i class="fa fa-sort" aria-hidden="true"></i></span> <select class="multiselect-ui form-control" style="display: none;" multiple="multiple" id="msPriority" onchange="{ChangeHandler}"> <option riot-value="{item.id}" each="{item in Priority}">{item.name}</option> </select> </div> </div> </div> <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2"> <div class="form-group nomargin"> <label class="control-label">VIP</label> <div class="input-group" style="background-color:#fff; width: 100%;"><span class="input-group-addon"><i class="fa fa-star-o" aria-hidden="true"></i></span> <select class="multiselect-ui form-control" style="display: none;" multiple="multiple" id="msVIP"> <option value="1" selected="selected">1</option> <option value="2" selected="selected">2</option> <option value="3" selected="selected">3</option> <option value="3" selected="selected">4</option> <option value="3" selected="selected">5</option> </select> </div> </div> </div> <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2"> <div class="form-group nomargin"> <label class="control-label">VIP</label> <div class="input-group" style="background-color:#fff; width: 100%;"><span class="input-group-addon"><i class="fa fa-credit-card" aria-hidden="true"></i></span> <select class="multiselect-ui form-control" style="display: none;" multiple="multiple" id="msLoyalty1"> <option value="1" selected="selected">Black</option> <option value="2" selected="selected">Silver</option> <option value="3" selected="selected">Gold</option> <option value="4" selected="selected">Platinum</option> </select> </div> </div> </div> <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2"> <div class="form-group nomargin"> <label class="control-label">SR/Case #</label> <div class="input-group" style="background-color:#fff; width: 100%;"><span class="input-group-addon"><i class="fa fa-hashtag" aria-hidden="true"></i></span> <input class="form-control" type="text"> </div> </div> </div> <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2"> <div class="form-group nomargin"> <label class="control-label">Room #</label> <div class="input-group" style="background-color:#fff; width: 100%;"><span class="input-group-addon"><i class="fa fa-bed" aria-hidden="true"></i></span> <input class="form-control" type="text"> </div> </div> </div> </div> <div class="row"> <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2"> <div class="form-group nomargin"> <label class="control-label">From</label> <div class="input-group" style="background-color:#fff; width: 100%;"><span class="input-group-addon"><i class="fa fa-calendar-o" aria-hidden="true"></i></span> <input class="form-control" type="datetime-local"> </div> </div> </div> <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2"> <div class="form-group nomargin"> <label class="control-label">To</label> <div class="input-group" style="background-color:#fff; width: 100%;"><span class="input-group-addon"><i class="fa fa-calendar-o" aria-hidden="true"></i></span> <input class="form-control" type="datetime-local"> </div> </div> </div> <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2"> <div class="form-group nomargin"> <label class="control-label">Group By</label> <div class="input-group" style="background-color:#fff; width: 100%;"><span class="input-group-addon"><i class="fa fa-object-group" aria-hidden="true"></i></span> <select class="form-control" id="selGroupping"> <option value="1" selected="selected">No Grouping</option> <option value="2" selected="selected">Priority</option> <option value="3" selected="selected">Time</option> <option value="4" selected="selected">Category</option> <option value="5" selected="selected">Subcategory</option> <option value="6" selected="selected">VIP Tier</option> <option value="7" selected="selected">Loyalty Tier</option> </select> </div> </div> </div> <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2"> <div class="form-group nomargin"> <label class="control-label">Search</label> <div class="input-group" style="background-color:#fff; width: 100%;"><span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span> <select class="multiselect-ui form-control" style="display: none;" multiple="multiple" id="msLoyalty"> <option value="1" selected="selected">SR Service / Case Reason</option> <option value="2" selected="selected">Description</option> <option value="3" selected="selected">Guest Name</option> <option value="4" selected="selected">Status</option> </select> </div> </div> </div> <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2"> <div class="form-group nomargin"> <label class="control-label">Delivery</label> <div class="input-group" style="background-color:#fff; width: 100%;"><span class="input-group-addon"><i class="fa fa-paper-plane" aria-hidden="true"></i></span> <input class="form-control" type="text"> </div> </div> </div> <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2"> <div class="form-group nomargin"> <label class="control-label">&nbsp;</label> <button class="btn btn-primary btn-block btn-feedback-submit">Search</button> </div> </div> </div> </div> <div class="col" each="{item in data}"> <p>{item.name}</p> </div>', '', '', function (opts) {
+    const ctx = this;
+
+    ctx.Priority = [{ name: 'Low' }, { name: 'Medium' }, { name: 'High' }];
+
+    ctx.on('mount', function () {
+        $('.multiselect-ui').multiselect({
+            includeSelectAllOption: true,
+            onChange: function (ev) {
+                console.log('ev ', ev);
+            },
+            onSelectAll: function (ev) {
+                console.log('ev ', ev);
+            },
+            onDeselectAll: function (ev) {
+                console.log('ev ', ev);
+            }
+        });
+    });
+});
 
 /***/ })
 /******/ ]);
