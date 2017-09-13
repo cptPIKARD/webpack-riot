@@ -5,30 +5,30 @@ const delay = ms => new Promise(r => setTimeout(r, ms))
 export const FetchPriorityList = async() => {
     if ( NODE_ENV == 'development' ) {
         await  delay(500)
-        return PriorityList
+        return JSON.parse(JSON.stringify(PriorityList))
     }
 }
 export const FetchVipList = async() => {
     if ( NODE_ENV == 'development' ) {
         await  delay(500)
-        return VipList
+        return JSON.parse(JSON.stringify(VipList))
     }
 }
 export const FetchLoyaltyList = async() => {
     if ( NODE_ENV == 'development' ) {
         await  delay(500)
-        return LoyaltyList
+        return JSON.parse(JSON.stringify(LoyaltyList))
     }
 }
 export const FetchGroupByList = async() => {
     if ( NODE_ENV == 'development' ) {
         await  delay(500)
-        return GroupBy
+        return JSON.parse(JSON.stringify(GroupBy))
     }
 }
 export const FetchSearchList = async() => {
     if ( NODE_ENV == 'development' ) {
         await  delay(500)
-        return SearchList
+        return JSON.parse(JSON.stringify(SearchList))
     }
 }

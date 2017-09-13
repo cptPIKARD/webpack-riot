@@ -11,7 +11,7 @@ class MainStore {
     }
     SetHeader(tab) {
         if( !this.Headers.get( tab ) ) {
-            const headerStore = new HeaderStore();
+            const headerStore = new HeaderStore(tab);
             this.Headers.set(tab, headerStore);
         }
     }
@@ -19,6 +19,13 @@ class MainStore {
         return this.Headers.get(tab);
     }
 
+    GetDataForFilters() {
+        let header = this.GetHeader(this.CurrentView);
+        header.trigger('GetDataForFilters');
+    }
+    GetDataForFiltersDone(data) {
+        this.trigger('GetDataForFiltersDone', data);
+    }
     MainTabChanged(tab) {
         this.CurrentView = tab;
         if( !this.GetHeader(tab) ) {
@@ -30,6 +37,8 @@ class MainStore {
 
     events() {
         this.on('MainTabChanged', this.MainTabChanged);
+        this.on('GetDataForFilters', this.GetDataForFilters);
+        this.on('GetFilterDataDone', this.GetDataForFiltersDone);
     }
 }
 

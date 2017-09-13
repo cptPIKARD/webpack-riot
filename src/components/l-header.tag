@@ -1,5 +1,5 @@
 l-header
-    l-header-state( header={ FilterData } )
+    l-header-state( header='{ FilterData }' )
 
     script.
 
@@ -7,36 +7,35 @@ l-header
 
         import {mainStore} from '../utils/mainStore'
 
-        const ctx = this,
-            currentView = mainStore.CurrentView,
-            currentHeader = mainStore.GetHeader( currentView ),
-            currentHeaderData = currentHeader.FiltersData;
+        const ctx = this;
 
-        ctx.FilterData = currentHeaderData.size ? currentHeaderData : [];
+        ctx.FilterData = [];
 
         ctx.on('mount', function () {
-            currentHeader.trigger('GetDataForFilters');
+            mainStore.trigger('GetDataForFilters');
         });
-        currentHeader.on('GetDataForFiltersDone', function (data) {
+
+        mainStore.on('GetDataForFiltersDone', function (data) {
             ctx.FilterData = data;
             ctx.update();
-            console.log('data ', data);
         });
+
         mainStore.on('MainTabChangedDone', function (header) {
             header.trigger('GetDataForFilters');
         });
-        ctx.on('unmount', function () {
-            currentHeader.off('GetDataForFilters');
-        });
+
         ctx.on('updated', function () {
             $('.multiselect-ui').multiselect({
                 includeSelectAllOption: true,
-                onChange: function (ev) {
-                    const obj = {
-                        value: +$(ev).val(),
-                        filterName: +$(ev).val()
-                    }
-                    currentHeader.trigger('FilterChanged');
+                onChange: function (ev, checked) {
+                    const currentView = mainStore.CurrentView,
+                            currentHeader = mainStore.GetHeader(currentView),
+                            data = {
+                                    value: +$(ev).val(),
+                                    checked: checked,
+                                    filterName: $(ev).attr('data-filter')
+                                };
+                    currentHeader.trigger('FilterChanged', data);
                 },
                 onSelectAll: function (ev) {
                     console.log('ev ', ev);
@@ -45,5 +44,11 @@ l-header
                     console.log('ev ', ev);
                 }
             });
-        })
+            $('.multiselect-ui').multiselect('rebuild');
+        });
+
+
+        ctx.on('unmount', function () {
+            mainStore.off('GetDataForFilters');
+        });
 

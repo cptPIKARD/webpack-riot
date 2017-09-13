@@ -26,7 +26,7 @@ l-header-state
                     span.input-group-addon
                         i.fa.fa-sort(aria-hidden="true")
                     select.multiselect-ui.form-control(style='display: none;' multiple="multiple" id="msPriority")
-                        option( value='{item.value}' each='{ item in FilterData.Priority }' data-filter='Priority' selected='{item.Selected}' ) {item.name}
+                        option( value='{item.value}' each='{ item in opts.header.Priority }' data-filter='Priority' selected='{item.Selected}' ) {item.name}
         .col-xs-12( class='col-sm-4 col-md-2 col-lg-2')
             .form-group.nomargin
                 label.control-label VIP
@@ -34,7 +34,7 @@ l-header-state
                     span.input-group-addon
                         i.fa.fa-star-o(aria-hidden="true")
                     select.multiselect-ui.form-control(style='display: none;' multiple="multiple" id="msVIP")
-                        option( value='{item.value}' each='{ item in FilterData.Vip }' ) {item.name}
+                        option( value='{item.value}' each='{ item in opts.header.Vip }' data-filter='Vip' selected='{item.Selected}' ) {item.name}
         .col-xs-12( class='col-sm-4 col-md-2 col-lg-2')
             .form-group.nomargin
                 label.control-label Loyalty
@@ -42,7 +42,7 @@ l-header-state
                     span.input-group-addon
                         i.fa.fa-credit-card(aria-hidden="true")
                     select.multiselect-ui.form-control(style='display: none;' multiple="multiple" id="msLoyalty1")
-                        option( value='{item.value}' each='{ item in FilterData.Loyalty }' ) {item.name}
+                        option( value='{item.value}' each='{ item in opts.header.Loyalty }' data-filter='Loyalty' selected='{item.Selected}' ) {item.name}
         .col-xs-12( class='col-sm-4 col-md-2 col-lg-2')
             .form-group.nomargin
                 label.control-label SR/Case #
@@ -79,7 +79,7 @@ l-header-state
                     span.input-group-addon
                         i.fa.fa-object-group(aria-hidden="true")
                     select.form-control( id="selGroupping")
-                        option( value='{item.value}' each='{ item in FilterData.GroupBy }' ) {item.name}
+                        option( value='{item.value}' each='{ item in opts.header.GroupBy }' data-filter='GroupBy' selected='{item.Selected}' ) {item.name}
         .col-xs-12( class='col-sm-4 col-md-2 col-lg-2')
             .form-group.nomargin
                 label.control-label Search
@@ -87,7 +87,7 @@ l-header-state
                     span.input-group-addon
                         i.fa.fa-search(aria-hidden="true")
                     select.multiselect-ui.form-control(style='display: none;' multiple="multiple" id="msLoyalty")
-                        option( value='{item.value}' each='{ item in FilterData.Search }' ) {item.name}
+                        option( value='{item.value}' each='{ item in opts.header.Search }' data-filter='Search' selected='{item.Selected}' ) {item.name}
         .col-xs-12( class='col-sm-4 col-md-2 col-lg-2')
             .form-group.nomargin
                 label.control-label Delivery
@@ -102,8 +102,14 @@ l-header-state
     .clearfix
         br
 
+
     script(type='javascript').
-        const ctx  = this;
-        ctx.FilterData = opts.header;
+
+
+
+
+
+
+
 
 

@@ -1,10 +1,12 @@
 import riot from 'riot'
 import {FetchPriorityList, FetchVipList, FetchLoyaltyList, FetchGroupByList, FetchSearchList} from './fetch'
+import {mainStore} from './mainStore.js'
 
 export class HeaderStore {
-    constructor() {
+    constructor(tab) {
         riot.observable(this);
         this.events();
+        this.HeaderName = tab;
         this.FiltersData = new Map();
     }
 
@@ -17,13 +19,21 @@ export class HeaderStore {
             this.CreateFiltersData( await FetchSearchList(), 'Search' );
         }
         const data = this.MapToObj( this.FiltersData );
-        this.trigger('GetDataForFiltersDone', data);
-        
+        mainStore.trigger('GetFilterDataDone', data);
     }
     CreateFiltersData(filterItem, name) {
         if( !this.FiltersData.get(name) ) {
             this.FiltersData.set(name, filterItem);
         }
+    }
+    FilterChanged(data) {
+        let filter = this.FiltersData.get(data.filterName);
+        for(let item of filter) {
+            if(item.value == data.value) {
+                item.Selected = data.checked;
+            }
+        }
+        this.FiltersData.set(data.filterName, filter);
     }
     
     MapToObj(Map) {
@@ -35,5 +45,6 @@ export class HeaderStore {
     }
     events() {
         this.on('GetDataForFilters', this.GetDataForFilters);
+        this.on('FilterChanged', this.FilterChanged);
     }
 }
