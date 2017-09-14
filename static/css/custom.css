@@ -164,3 +164,29 @@ span.multiselect-native-select select {
     margin-left: -20px;
     margin-right: 0
 }
+.hidden {
+    display: none;
+}
+.showing {
+    display: block;
+}
+.loading {
+    display: block;
+}
+.loaded {
+    display: none;
+}
+.header-state {
+    position: relative;
+    min-height: 178px;
+}
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -20px;
+    z-index: 10;
+}
+.loader .fa {
+    font-size: 40px;
+}

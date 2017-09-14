@@ -1,6 +1,6 @@
 main-tab
     ul.nav.nav-tabs.nav-console
-        li.active.text-bold( onClick="{ChageTabHandler}" data-name="tab")
+        li.active.text-bold( onClick="{ChageTabHandler}")
             a(data-toggle="tab" href="#ServiceRequests")
                 i.fa.fa-angle-double-right(aria-hidden="true") SERVICE REQUESTS
                 span.badge 1

@@ -1,4 +1,4 @@
-import {PriorityList, VipList, LoyaltyList, GroupBy, SearchList} from '../../static/data/moke'
+import {PriorityList, VipList, LoyaltyList, GroupBy, SearchList, ServiceRequests} from '../../static/data/moke'
 
 const delay = ms => new Promise(r => setTimeout(r, ms))
 
@@ -30,5 +30,11 @@ export const FetchSearchList = async() => {
     if ( NODE_ENV == 'development' ) {
         await  delay(500)
         return JSON.parse(JSON.stringify(SearchList))
+    }
+}
+export const FetchServiceData = async() => {
+    if ( NODE_ENV == 'development' ) {
+        await  delay(500)
+        return JSON.parse(JSON.stringify(ServiceRequests))
     }
 }

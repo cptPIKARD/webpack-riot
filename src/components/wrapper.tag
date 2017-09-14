@@ -3,3 +3,6 @@ wrapper
         .container-fluid
             l-header
             main-tab
+            .tab-content
+                service-grid-wrap
+                cases-grid-wrap

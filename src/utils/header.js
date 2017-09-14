@@ -3,23 +3,26 @@ import {FetchPriorityList, FetchVipList, FetchLoyaltyList, FetchGroupByList, Fet
 import {mainStore} from './mainStore.js'
 
 export class HeaderStore {
-    constructor(tab) {
+    constructor(tab , initialFiltersData) {
         riot.observable(this);
         this.events();
         this.HeaderName = tab;
-        this.FiltersData = new Map();
+        this.FiltersData = new Map( JSON.parse(JSON.stringify( Array.from(initialFiltersData.entries()) )) ); 
     }
 
     async GetDataForFilters() {
-        if( !this.FiltersData.size ) {
+        if( !mainStore.InitialFiltersData.size ) {
             this.CreateFiltersData( await FetchPriorityList(), 'Priority' );
             this.CreateFiltersData( await FetchVipList(), 'Vip' );
             this.CreateFiltersData( await FetchLoyaltyList(), 'Loyalty' );
             this.CreateFiltersData( await FetchGroupByList(), 'GroupBy' );
             this.CreateFiltersData( await FetchSearchList(), 'Search' );
+            this.CreateFiltersData( [{name: 'Closed', value: false}, {name: 'Cancelled', value: false}, {name: 'OnHold', value: false}], 'Status' );
+            this.CreateFiltersData( {value: ''}, 'SRCase' );
+            this.CreateFiltersData( {value: ''}, 'Delivery' );
+            this.CreateFiltersData( {value: ''}, 'Room' );
         }
-        const data = this.MapToObj( this.FiltersData );
-        mainStore.trigger('GetFilterDataDone', data);
+        mainStore.trigger('GetFilterDataDone', this.FiltersData);
     }
     CreateFiltersData(filterItem, name) {
         if( !this.FiltersData.get(name) ) {
@@ -28,20 +31,25 @@ export class HeaderStore {
     }
     FilterChanged(data) {
         let filter = this.FiltersData.get(data.filterName);
-        for(let item of filter) {
-            if(item.value == data.value) {
-                item.Selected = data.checked;
+            if( data.filter == 'input' ) {
+                filter.value = data.value;
+            }else {
+                for(let item of filter) {
+                    switch ( data.value ) {
+                        case 'selectAll':
+                            item.Selected = true;
+                            break;
+                        case 'deselectAll':
+                            item.Selected = false;
+                            break;
+                        case item.value:
+                            item.Selected = data.checked;
+                            break;
+                    }
+                    
             }
         }
         this.FiltersData.set(data.filterName, filter);
-    }
-    
-    MapToObj(Map) {
-        let obj = Object.create(null);
-        for (let [k,v] of Map) {
-            obj[k] = v;
-        }
-        return obj;
     }
     events() {
         this.on('GetDataForFilters', this.GetDataForFilters);

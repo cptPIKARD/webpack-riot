@@ -2,6 +2,10 @@ l-header
     l-header-state( header='{ FilterData }' )
 
     script.
+        GetDataFromCrm()
+        {
+            mainStore.trigger('GetDataFromCrm')
+        }
 
     script(type='javascript').
 
@@ -9,7 +13,9 @@ l-header
 
         const ctx = this;
 
-        ctx.FilterData = [];
+        ctx.FilterData = {};
+        ctx.FilterData.Class = 'hidden';
+        ctx.FilterData.LoadClass = 'loading';
 
         ctx.on('mount', function () {
             mainStore.trigger('GetDataForFilters');
@@ -17,6 +23,8 @@ l-header
 
         mainStore.on('GetDataForFiltersDone', function (data) {
             ctx.FilterData = data;
+            ctx.FilterData.Class = 'showing';
+            ctx.FilterData.LoadClass = 'loaded';
             ctx.update();
         });
 
@@ -38,13 +46,45 @@ l-header
                     currentHeader.trigger('FilterChanged', data);
                 },
                 onSelectAll: function (ev) {
-                    console.log('ev ', ev);
+                    const currentView = mainStore.CurrentView,
+                            currentHeader = mainStore.GetHeader(currentView),
+                            data = {
+                                value: 'selectAll',
+                                filterName: $(this)[0].$select.attr('id')
+                            };
+                    currentHeader.trigger('FilterChanged', data);
                 },
                 onDeselectAll: function (ev) {
-                    console.log('ev ', ev);
+                    const currentView = mainStore.CurrentView,
+                            currentHeader = mainStore.GetHeader(currentView),
+                            data = {
+                                value: 'deselectAll',
+                                filterName: $(this)[0].$select.attr('id')
+                            };
+                    currentHeader.trigger('FilterChanged', data);
                 }
             });
             $('.multiselect-ui').multiselect('rebuild');
+            $('#GroupBy').on('change', function (ev) {
+                const currentView = mainStore.CurrentView,
+                        currentHeader = mainStore.GetHeader(currentView),
+                        data = {
+                            checked: true,
+                            value: +$(ev.currentTarget).val(),
+                            filterName: $(ev.currentTarget).attr('id')
+                        };
+                currentHeader.trigger('FilterChanged', data);
+            })
+            $('input.form-control').on('change', function (ev) {
+                const currentView = mainStore.CurrentView,
+                        currentHeader = mainStore.GetHeader(currentView),
+                        data = {
+                            filter: 'input',
+                            value: $(ev.currentTarget).val(),
+                            filterName: $(ev.currentTarget).attr('id')
+                        };
+                currentHeader.trigger('FilterChanged', data);
+            })
         });
 
 

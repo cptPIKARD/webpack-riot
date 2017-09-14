@@ -100,3 +100,185 @@ export const SearchList = [
         value: 4
     }
 ]
+export const ServiceRequests = [
+    {
+        Sr: 'SR-678900000',
+        Room: 125,
+        Pax: {
+            Adult: 2,
+            Child: 1
+        },
+        Vip: '1',
+        Loyalty: {
+            name: 'Black',
+            value: 1
+        },
+        Guest: 'Vladimir Putin',
+        Services: {
+            name: 'Small Face Towel',
+            quantity: 2
+        },
+        RequestedBy: 'John Doe',
+        AssignedTo: 'Mithilesh Kumar',
+        Case: 'CS-32423-32342',
+        Status: 'IN PROGRESS',
+        Time: {
+            date: '10/08/2017',
+            time: '13:34'
+        },
+        Sla: '',
+        StatusService: {
+            name: 'Closed',
+            value: 1
+        },
+        Priority: {
+            name: 'Low',
+            value: 1
+        },
+        SubFilter: 'Department'
+    },
+    {
+        Sr: 'SR-678900000',
+        Room: 225,
+        Pax: {
+            Adult: 2,
+            Child: 0
+        },
+        Vip: '1',
+        Loyalty: {
+            name: 'Black',
+            value: 1
+        },
+        Guest: 'Optimus Prime',
+        Services: {
+            name: 'Small Face Towel',
+            quantity: 2
+        },
+        RequestedBy: 'John Doe',
+        AssignedTo: 'Ozzy Osborn',
+        Case: 'CS-32423-67342',
+        Status: 'IN PROGRESS',
+        Time: {
+            date: '10/08/2017',
+            time: '13:34'
+        },
+        Sla: '',
+        StatusService: {
+            name: 'Cancelled',
+            value: 2
+        },
+        Priority: {
+            name: 'Medium',
+            value: 2
+        },
+        SubFilter: 'Department'
+    },
+    {
+        Sr: 'SR-678900000',
+        Room: 125,
+        Pax: {
+            Adult: 1,
+            Child: 1
+        },
+        Vip: '1',
+        Loyalty: {
+            name: 'Gold',
+            value: 3
+        },
+        Guest: 'Optimus Prime',
+        Services: {
+            name: 'Whisky',
+            quantity: 5
+        },
+        RequestedBy: 'Sam Smith',
+        AssignedTo: 'Ozzy Osborn',
+        Case: 'CS-32423-67342',
+        Status: 'IN PROGRESS',
+        Time: {
+            date: '10/08/2017',
+            time: '13:34'
+        },
+        Sla: '',
+        StatusService: {
+            name: 'Cancelled',
+            value: 2
+        },
+        Priority: {
+            name: 'Medium',
+            value: 2
+        },
+        SubFilter: 'Department'
+    },
+    {
+        Sr: 'SR-678900000',
+        Room: 232,
+        Pax: {
+            Adult: 2,
+            Child: 2
+        },
+        Vip: '1',
+        Loyalty: {
+            name: 'Gold',
+            value: 3
+        },
+        Guest: 'Optimus Prime',
+        Services: {
+            name: 'Whisky',
+            quantity: 10
+        },
+        RequestedBy: 'Sam Smith',
+        AssignedTo: 'John Lennon',
+        Case: 'CS-32423-67342',
+        Status: 'IN PROGRESS',
+        Time: {
+            date: '10/08/2017',
+            time: '13:34'
+        },
+        Sla: '',
+        StatusService: {
+            name: 'Cancelled',
+            value: 2
+        },
+        Priority: {
+            name: 'High',
+            value: 3
+        },
+        SubFilter: 'DepartmentOverdue'
+    },
+    {
+        Sr: 'SR-678900000',
+        Room: 554,
+        Pax: {
+            Adult: 2,
+            Child: 1
+        },
+        Vip: '1',
+        Loyalty: {
+            name: 'Gold',
+            value: 3
+        },
+        Guest: 'John Wick',
+        Services: {
+            name: 'Whisky',
+            quantity: 10
+        },
+        RequestedBy: 'Sam Smith',
+        AssignedTo: 'Ozzy Osborn',
+        Case: 'CS-88423-67342',
+        Status: 'IN PROGRESS',
+        Time: {
+            date: '10/08/2017',
+            time: '13:34'
+        },
+        Sla: '',
+        StatusService: {
+            name: 'On Hold',
+            value: 3
+        },
+        Priority: {
+            name: 'High',
+            value: 3
+        },
+        SubFilter: 'Hotels'
+    }
+]
