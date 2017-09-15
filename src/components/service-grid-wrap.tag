@@ -1,21 +1,22 @@
 service-grid-wrap(id='ServiceRequests' class="tab-pane fade active in")
     service-sub-tabs
-    .widget-box.clearfix.nopadding
-        .widget-box-header.nomarging.header-hpriority.clearfix(data-toggle="collapse" data-target="#hpriority" aria-expanded="true")
-            h5 HIGH PRIORITY
+    .widget-box.clearfix.nopadding(each='{group in groups}' style="display: { group.length ? 'block' : 'none'}")
+        .widget-box-header.nomarging.header-hpriority.clearfix(data-toggle="collapse" data-target="#{group[0].groupValue + group[0].groupName}" aria-expanded="true")
+            h5
                 i.fa.fa-angle-double-right(aria-hidden="true")
-                span.badge.badge-hpriority-count 2
-        .table-responsive.collapse.in(id="hpriority" aria-expanded="true")
-            service-grid( service='{ grid }' )
+                | {group[0].groupValue} {group[0].groupName}
+                span.badge.badge-hpriority-count {group.length}
+        .table-responsive.collapse.in(id="{group[0].groupValue + group[0].groupName}" aria-expanded="true")
+            service-grid( service='{ group }' )
 
 
     script(type='javascript').
         import {mainStore} from '../utils/mainStore'
         const ctx = this;
 
-        ctx.grid = [];
+        ctx.groups = [];
 
         mainStore.on('ServiceSubTabChangedDone', function (data) {
-            ctx.grid = data;
+            ctx.groups = data;
             ctx.update();
         });

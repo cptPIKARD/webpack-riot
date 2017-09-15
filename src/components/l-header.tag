@@ -69,6 +69,7 @@ l-header
                 const currentView = mainStore.CurrentView,
                         currentHeader = mainStore.GetHeader(currentView),
                         data = {
+                            filter: 'GroupBy',
                             checked: true,
                             value: +$(ev.currentTarget).val(),
                             filterName: $(ev.currentTarget).attr('id')

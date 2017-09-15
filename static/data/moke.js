@@ -55,7 +55,8 @@ export const LoyaltyList = [
 export const GroupBy = [
     {
         name: 'No Grouping',
-        value: 1
+        value: 1,
+        Selected: true
     },
     {
         name: 'Priority',
@@ -74,11 +75,11 @@ export const GroupBy = [
         value: 5
     },
     {
-        name: 'VIP Tier',
+        name: 'Vip',
         value: 6
     },
     {
-        name: 'Loyalty Tier',
+        name: 'Loyalty',
         value: 7
     }
 ]
@@ -108,7 +109,10 @@ export const ServiceRequests = [
             Adult: 2,
             Child: 1
         },
-        Vip: '1',
+        Vip: {
+            name: '1',
+            value: 1
+        },
         Loyalty: {
             name: 'Black',
             value: 1
@@ -144,7 +148,10 @@ export const ServiceRequests = [
             Adult: 2,
             Child: 0
         },
-        Vip: '1',
+        Vip: {
+            name: '1',
+            value: 1
+        },
         Loyalty: {
             name: 'Black',
             value: 1
@@ -180,7 +187,10 @@ export const ServiceRequests = [
             Adult: 1,
             Child: 1
         },
-        Vip: '1',
+        Vip: {
+            name: '2',
+            value: 2
+        },
         Loyalty: {
             name: 'Gold',
             value: 3
@@ -216,7 +226,10 @@ export const ServiceRequests = [
             Adult: 2,
             Child: 2
         },
-        Vip: '1',
+        Vip: {
+            name: '1',
+            value: 1
+        },
         Loyalty: {
             name: 'Gold',
             value: 3
@@ -252,7 +265,10 @@ export const ServiceRequests = [
             Adult: 2,
             Child: 1
         },
-        Vip: '1',
+        Vip: {
+            name: '3',
+            value: 3
+        },
         Loyalty: {
             name: 'Gold',
             value: 3

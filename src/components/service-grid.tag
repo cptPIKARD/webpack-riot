@@ -28,7 +28,7 @@ service-grid
                         strong {item.Pax.Child} x
                         i.fa.fa-child
                 td(align="center" class="text-nowrap" width="1")
-                    span.text-nowrap {item.Vip}
+                    span.text-nowrap {item.Vip.name}
                 td(align="left" class="text-nowrap" width="100")
                     span.text-nowrap
                         span.label.label-red.tier-bg-4 {item.Loyalty.name}

@@ -33,6 +33,14 @@ export class HeaderStore {
         let filter = this.FiltersData.get(data.filterName);
             if( data.filter == 'input' ) {
                 filter.value = data.value;
+            }else if( data.filter == 'GroupBy' ) {
+                for(let item of filter) {
+                    if( item.value == data.value ) {
+                        item.Selected = data.checked;
+                    }else {
+                        item.Selected = false;
+                    }
+                }
             }else {
                 for(let item of filter) {
                     switch ( data.value ) {

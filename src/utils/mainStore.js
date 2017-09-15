@@ -55,14 +55,15 @@ class MainStore {
     }
     ServiceSubTabChanged(subTab) {
         this.CurrentSubView = subTab;
-        let data = this.Layouts.get( this.CurrentView );
+        let dataLayout = this.Layouts.get( this.CurrentView );
 
         const FilterSubServices = (service) => service.SubFilter == subTab;
         const MainFilterSubServices = compose(FilterSubServices);
-        const dataToView = this.FilterForSubServices( MainFilterSubServices, data );
+        const subData = this.FilterForSubServices( MainFilterSubServices, dataLayout );
+        const groupData = this.GroupingData( subData );
 
-        this.trigger('ServiceSubTabChangedDone', dataToView);
-        console.log('dataToView ', dataToView);
+        this.trigger('ServiceSubTabChangedDone', groupData);
+        console.log('dataToView ', groupData);
     }
     FilterForSubServices( filters, data ) {
         let res = [];
@@ -75,6 +76,43 @@ class MainStore {
         }
 
         return res;
+    }
+    GroupingData( data ) {
+        const header = this.GetHeader( this.CurrentView );
+        let dataFilters = header.FiltersData.get('GroupBy'),
+            selectedGroup = this.GetCurrentGroupFilter( dataFilters );
+
+        if( selectedGroup[0].value == 1 ) {
+            return [data];
+        }else {
+            let groupValues = header.FiltersData.get( selectedGroup[0].name );
+            let groupMap = this.CreateMapForGroup( groupValues );
+
+            return this.SetGroupsToData(data, groupMap, selectedGroup[0].name);
+        }
+    }
+    SetGroupsToData( data, groups, groupName ) {
+        for(let item of data ) {
+            item.groupName = groupName;
+            item.groupValue = item[groupName].name;
+            let arr = groups.get( item[groupName].value );
+            arr.push( item );
+            groups.set( item[groupName].value, arr );
+        }
+
+        return Array.from( groups.values() );
+    } 
+    CreateMapForGroup(values) {
+        let map = new Map();
+        for(let item of values) {
+            map.set(item.value, []);
+        }
+        return map;
+    }
+    GetCurrentGroupFilter(filters) {
+        return filters.filter(function (filter, i) {
+            return filter.Selected;
+        });
     }
 
     MapToObj(Map) {
