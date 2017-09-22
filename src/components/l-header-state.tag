@@ -1,8 +1,6 @@
 l-header-state
     .header-state
-        .loader(class='{opts.header.LoadClass}')
-            span.fa.fa-cog.fa-spin
-        .header-data(class='{opts.header.Class}')
+        .header-data
             .row
                 .col-xs-12( class='col-sm-4 col-md-2 col-lg-2')
                     .form-group.nomargin

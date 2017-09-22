@@ -50,3 +50,8 @@ service-grid
                     span.text-nowrap
                     span.label.label-red {item.Sla}
                         i.fa.fa-clock-o
+
+
+    script(type='javascript').
+        const ctx = this;
+

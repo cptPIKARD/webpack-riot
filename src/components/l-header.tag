@@ -14,8 +14,6 @@ l-header
         const ctx = this;
 
         ctx.FilterData = {};
-        ctx.FilterData.Class = 'hidden';
-        ctx.FilterData.LoadClass = 'loading';
 
         ctx.on('mount', function () {
             mainStore.trigger('GetDataForFilters');
@@ -23,8 +21,6 @@ l-header
 
         mainStore.on('GetDataForFiltersDone', function (data) {
             ctx.FilterData = data;
-            ctx.FilterData.Class = 'showing';
-            ctx.FilterData.LoadClass = 'loaded';
             ctx.update();
         });
 
